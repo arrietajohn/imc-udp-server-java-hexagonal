@@ -69,6 +69,44 @@
                 </configuration>
             </plugin>
             <plugin>
+                <groupId>com.github.spotbugs</groupId>
+                <artifactId>spotbugs-maven-plugin</artifactId>
+                <version>4.9.3.0</version>
+                <configuration>
+                    <effort>Max</effort>
+                    <threshold>Low</threshold>
+                    <failOnError>true</failOnError>
+                </configuration>
+                <executions>
+                    <execution>
+                        <id>spotbugs-check</id>
+                        <phase>verify</phase>
+                        <goals>
+                            <goal>check</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-pmd-plugin</artifactId>
+                <version>3.26.0</version>
+                <configuration>
+                    <failOnViolation>true</failOnViolation>
+                    <linkXRef>false</linkXRef>
+                    <printFailingErrors>true</printFailingErrors>
+                </configuration>
+                <executions>
+                    <execution>
+                        <id>pmd-check</id>
+                        <phase>verify</phase>
+                        <goals>
+                            <goal>check</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+            <plugin>
                 <groupId>org.jacoco</groupId>
                 <artifactId>jacoco-maven-plugin</artifactId>
                 <version>0.8.12</version>
@@ -87,7 +125,7 @@
                         <configuration>
                             <excludes>
                                 <exclude>com/jcaa/Main.class</exclude>
-                                <exclude>com/jcaa/entrypoint/gui/**</exclude>
+                                <exclude>com/jcaa/imc/entrypoint/gui/**</exclude>
                             </excludes>
                         </configuration>
                     </execution>
@@ -100,7 +138,7 @@
                         <configuration>
                             <excludes>
                                 <exclude>com/jcaa/Main.class</exclude>
-                                <exclude>com/jcaa/entrypoint/gui/**</exclude>
+                                <exclude>com/jcaa/imc/entrypoint/gui/**</exclude>
                             </excludes>
                             <rules>
                                 <rule>
